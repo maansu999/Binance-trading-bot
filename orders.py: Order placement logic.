@@ -1,0 +1,10 @@
+def place_order(client, symbol, side, order_type, quantity, price=None):
+    response = client.create_order(symbol, side, order_type, quantity, price)
+    print_order_summary(response)
+    return response
+
+def print_order_summary(response):
+    print(f"Order ID: {response['orderId']}")
+    print(f"Status: {response['status']}")
+    print(f"Executed Qty: {response['executedQty']}")
+    print(f"Avg Price: {response.get('avgPrice', 'N/A')}")
